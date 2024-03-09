@@ -25,7 +25,7 @@ return new class extends Migration
             $table->string('district')->after('city')->nullable();
             $table->string('county')->after('district')->nullable();
             $table->string('address')->after('county')->nullable();
-            $table->string('profile_intro', 250)->after('profile_intro')->nullable();
+            $table->string('profile_intro', 250)->after('address')->nullable();
             $table->string('avatar_path')->after('profile_intro')->nullable();
         });
     }

@@ -15,14 +15,12 @@ use App\Http\Controllers\API\User\Profile\UserProfileController;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+Route::middleware('auth:sanctum')->group(function (){
 });
 
-Route::prefix('user/{user_id}')->group(function (){
-    Route::prefix('profile')->group(function (){
+Route::prefix('user')->group(function (){
+    Route::prefix('{user_id}/profile')->group(function (){
         Route::get('get', [UserProfileController::class, 'getProfile']);
-        Route::post('create', [UserProfileController::class, 'postCreateProfile']);
         Route::post('update', [UserProfileController::class, 'postUpdateProfile']);
         Route::post('upload-avatar', [UserProfileController::class, 'postUploadProfileIcon']);
     });
