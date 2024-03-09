@@ -22,7 +22,7 @@ Route::prefix('user')->group(function (){
     Route::prefix('{user_id}/profile')->group(function (){
         Route::get('get', [UserProfileController::class, 'getProfile']);
         Route::post('update', [UserProfileController::class, 'postUpdateProfile']);
-        Route::post('upload-avatar', [UserProfileController::class, 'postUploadProfileIcon']);
+        Route::post('upload-avatar', [UserProfileController::class, 'postUploadAvatar']);
     });
 });
 
@@ -49,4 +49,10 @@ Route::prefix('district')->group(function (){
 Route::prefix('county')->group(function (){
     Route::get('get');
     Route::get('get-list');
+});
+
+/** Storage **/
+Route::get('storage', function (Request $request){
+    $path = $request->get('path');
+    return \Illuminate\Support\Facades\Storage::response($path);
 });

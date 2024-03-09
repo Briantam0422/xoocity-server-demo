@@ -22,6 +22,9 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    protected $appends = [
+        'avatar'
+    ];
 
     public function scopeFindById($query, $user_id){
         return $query->where('id', $user_id);
@@ -29,5 +32,9 @@ class User extends Authenticatable
 
     public function getUser($user_id, array $with = []){
         return $this->findById($user_id)->with($with)->first();
+    }
+
+    public function getAvatarAttribute(){
+        return env('APP_URL') . 'api/storage?path=' . $this->avatar_path;
     }
 }

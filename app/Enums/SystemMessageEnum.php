@@ -12,6 +12,7 @@ enum SystemMessageEnum:string{
     case ItemNotFound = 'Item Not Found';
     case InputCantBeNull = 'Input can\'t be null';
     case RegisterSuccessfully = 'Register Successfully';
+    case UploadFileSuccessfully = 'Upload Successfully';
     case UploadFileFail = 'Upload File Fail';
     case CreateSuccessfully = 'Create Successfully';
     case EditSuccessfully = 'Edited Successfully';
